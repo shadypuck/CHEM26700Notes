@@ -3,6 +3,8 @@
 \usepackage{fancyhdr}
 \usepackage{marginnote}
 \usepackage{enumitem}
+\usepackage{siunitx}
+\usepackage{graphicx}
 \usepackage{mhchem}
 \usepackage{amsmath,amssymb}
 \usepackage[hidelinks]{hyperref}
@@ -23,5 +25,9 @@
 \reversemarginpar
 
 \setitemize[3]{label={\scriptsize$\blacksquare$}}
+
+\DeclareSIUnit{\molar}{M}
+
+\graphicspath{{../ExtFiles/}}
 
 \usepackage{subfiles}
