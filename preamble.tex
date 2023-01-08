@@ -4,9 +4,11 @@
 \usepackage{marginnote}
 \usepackage{enumitem}
 \usepackage{siunitx}
-\usepackage{graphicx}
+\usepackage{graphicx,tikz}
+\usepackage{float}
 \usepackage{mhchem}
 \usepackage{amsmath,amssymb}
+\usepackage{bm,physics}
 \usepackage[hidelinks]{hyperref}
 \usepackage{subfiles}
 
@@ -30,3 +32,7 @@
 \DeclareSIUnit{\molar}{M}
 
 \graphicspath{{../ExtFiles/}}
+
+\colorlet{rex}{red!80!black!90!orange!80}
+
+\newcommand{\e}[1][]{\text{e}^{#1}}
