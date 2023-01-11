@@ -1,0 +1,193 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\stepcounter{chapter}
+
+\begin{document}
+
+
+
+
+\chapter{???}
+\section{Lecture 3: Time, Frequency, and Fourier Transforms}
+\begin{itemize}
+    \item \marginnote{1/10:}Frequency- and time-domain spectroscopy.
+    \begin{itemize}
+        \item Two ways of extracting the same information.
+        \begin{enumerate}
+            \item Absorption spectrum (frequency domain).
+            \begin{itemize}
+                \item Vary frequency of driving field or disperse white light after passing through the sample and look at each frequency component.
+                \item Measure the power absorbed for different frequencies.
+                \item Tells us the resonance frequency, how strongly the light interacts with the matter, and damping times or relaxation processes.
+            \end{itemize}
+            \item Pulsed excitation (time domain).
+            \begin{itemize}
+                \item Apply a pulsed driving force.
+                \item Measure resultant periodic oscillation and relaxation.
+                \item This is the basis for modern NMR and FTIR instruments.
+            \end{itemize}
+        \end{enumerate}
+        \item Both represent the time-dependent behavior of a molecule.
+    \end{itemize}
+    \item A powerful reason to use the time domain is the formal relationship between time and frequency data, the \textbf{Fourier transform}.
+    \item \textbf{Fourier transform}: A formal relationship between the time domain and the frequency domain.
+    \begin{itemize}
+        \item Underlying idea: Any function can be expressed as a sum of sines and cosines, i.e.,
+        \begin{equation*}
+            F(t) = \sum_{n=1}^\infty[a_n\cos(n\bar{\omega}t)+b_n\sin(n\bar{\omega}t)]
+        \end{equation*}
+        \item In practice, sample $N$ points over a period $T$.
+        \begin{itemize}
+            \item The values of time at which we sample are $t=n\delta t$ for $n=1,\dots,m$.
+        \end{itemize}
+        \item Numerical analysis: Expand in harmonics of base frequency, i.e., we let $\bar{\omega}=\pi/T$ be 1/2 cycle of $T$. The harmonics are $n\bar{\omega}$ for $n=1$ to $N$. We thus have as many harmonics as we do data points.
+        \item Then we plot the expansion coefficients vs. the frequency, and that is the spectrum in the series of expansion coefficients.
+        \item There's more to it than this, but this is the basic concept.
+        \item Also, this is only a discrete data set.
+    \end{itemize}
+    \item \textbf{Fourier analysis}: Determining the coefficients $a_n,b_n$.
+    \item Fourier transform relations.
+    \begin{itemize}
+        \item For continuous functions, we use Fourier transform integrals.
+        \begin{itemize}
+            \item Note that although both of the following integrals are sine transforms, there also exist cosine and complex $\e[-i\omega t]$ transforms.
+            \item Sine and cosine transforms are used for real data; the complex form is more general.
+        \end{itemize}
+        \item To convert to the time domain $S(t)$, we write
+        \begin{equation*}
+            S(t) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}\tilde{S}(\omega)\sin\omega t\dd\omega
+        \end{equation*}
+        \item To convert to the frequency domain $\tilde{S}(\omega)$, we write
+        \begin{equation*}
+            \tilde{S}(\omega) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}S(t)\sin\omega t\dd{t}
+        \end{equation*}
+        \item Example: Damped harmonic oscillator.
+        \begin{equation*}
+            S(t) \propto \e[-\gamma t]\sin\omega_0t
+            \quad\Longleftrightarrow\quad
+            \tilde{S}(\omega) \propto \frac{\gamma}{(\omega-\omega_0)^2+\gamma^2}
+        \end{equation*}
+    \end{itemize}
+    \item Parameters in the time and frequency domains.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            \footnotesize
+            \begin{scope}
+                \draw [-latex] (0,0) -- (5,0) node[below left]{$t$};
+                \node at (-1,2.75) {\small$S(t)$};
+    
+                \draw [blx,yshift=4.7cm,yscale=0.5] plot[domain=0:5,samples=1000,smooth,/pgf/fpu,/pgf/fpu/output format=fixed] (\x,{e^(-0.5*\x)*sin(50*\x r)});
+                \draw [grx,yshift=3.4cm,yscale=0.5] plot[domain=0:5,samples=1000,smooth,/pgf/fpu,/pgf/fpu/output format=fixed] (\x,{e^(-1.5*\x)*sin(50*\x r)});
+                \draw [orx,yshift=2.1cm,yscale=0.5] plot[domain=0:5,samples=100,smooth,/pgf/fpu,/pgf/fpu/output format=fixed] (\x,{e^(-0.5*\x)*sin(20*\x r)});
+                \draw [rex,yshift=0.8cm,yscale=0.5] plot[domain=0:5,samples=100,smooth,/pgf/fpu,/pgf/fpu/output format=fixed] (\x,{e^(-1.5*\x)*sin(20*\x r)});
+            \end{scope}
+            \begin{scope}[xshift=7cm]
+                \draw [-latex] (0,0) -- (5,0) node[below left]{$\omega$};
+                \node at (6,2.75) {\small$\tilde{S}(\omega)$};
+    
+                \draw [blx,xshift=2.5cm,yshift=4.7cm,yscale=0.5] plot[domain=-2.5:2.5,samples=500,smooth] (\x,{0.1/(18*(\x*\x+1/324))});
+                \draw [grx,xshift=2.5cm,yshift=3.4cm,yscale=0.5] plot[domain=-2.5:2.5,samples=500,smooth] (\x,{0.1/(9*(\x*\x+1/81))});
+                \draw [orx,xshift=1.5cm,yshift=2.1cm,yscale=0.5] plot[domain=-1.5:3.5,samples=500,smooth] (\x,{0.1/(18*(\x*\x+1/324))});
+                \draw [rex,xshift=1.5cm,yshift=0.8cm,yscale=0.5] plot[domain=-1.5:3.5,samples=500,smooth] (\x,{0.1/(9*(\x*\x+1/81))});
+            \end{scope}
+        \end{tikzpicture}
+        \caption{Parameters in the time and frequency domains.}
+        \label{fig:paramTimeFreq}
+    \end{figure}
+    \begin{table}[h!]
+        \centering
+        \small
+        \renewcommand{\arraystretch}{1.2}
+        \begin{tabular}{l|l|l}
+            \textbf{Parameter} & \textbf{Time Domain $\bm{S(t)}$} & \textbf{Frequency Domain $\bm{\tilde{S}(\omega)}$}\\
+            \hline
+            Large $\omega_0$ & Fast oscillations & High frequency\\
+            Small $\omega_0$ & Slow oscillations & Low frequency\\
+            Large $\gamma$ & Fast decay & Broad linewidth\\
+            Small $\gamma$ & Slow decay & Narrow linewidth\\
+        \end{tabular}
+        \caption{Parameters in the time and frequency domains.}
+        \label{tab:paramTimeFreq}
+    \end{table}
+    \begin{itemize}
+        \item The area under the lines remains constant.
+        \item Notice how the lower-frequency waves (orange and red) have frequency spikes shifted down.
+        \item Broader Lorentzian implies more different types of frequencies are present implies destructive interference takes hold more quickly implies quicker decay.
+    \end{itemize}
+    \item F.T. Example: Two resonances.
+    \begin{itemize}
+        \item Consider a superposition of two oscillating decaying functions
+        \begin{equation*}
+            C(t) = \e[-\gamma t]\sin(\omega_1t)+\e[-\gamma t]\sin(\omega_2t)
+        \end{equation*}
+        \item This implies two resonances in the spectrum.
+        \begin{itemize}
+            \item In particular, they manifest as two beat frequencies, one of which is the average frequency, and the other of which is the difference.
+            \item The average frequency determines the regular vibrations; the difference is the bounding function.
+        \end{itemize}
+    \end{itemize}
+    \item History of science during the French revolution.
+    \begin{itemize}
+        \item Lavoisier and Fourier were both strongly influenced by their time (the French revolution).
+        \item Lavoisier was an elite tax collector, and was sentenced to be executed. When he asked the judge for mercy, the judge said, "the Republic has no need for scientists."
+        \item Fourier got into trouble with Robespierre even though he was a revolutionary, but Robespierre's regime was overthrown a day before his scheduled execution. Thus, we get Fourier transforms!
+    \end{itemize}
+    \item Fourier transform infrared spectrometer.
+    \begin{itemize}
+        \item Michelson Interferometer.
+        \begin{itemize}
+            \item Named after UChicago's first physics chair, also the first American to be awarded the Nobel prize in physics.
+        \end{itemize}
+        \item How it works: Intensity changes with pathlength-induced interference.
+        \begin{itemize}
+            \item Incoming monochromatic waves get half reflected, half transmitted, allowing for phase separation.
+            \item Mathematically,
+            \begin{align*}
+                \Delta L &= \frac{1}{\bar{\nu}} = \frac{c}{\nu}&
+                \Delta t &= \frac{\Delta L}{c}
+            \end{align*}
+            \item Thus, if our light source is emitting monochromatic light (as it should be), the intensity of the light impinging on the sample changes with the pathlength.
+            \begin{itemize}
+                \item In particular, if $\Delta L=n\lambda$, there is no change in intensity, but other forms see destructive interference to varying extents.
+            \end{itemize}
+            \item A Fourier transform then takes the monochromatic wave to a Fourier transform spectrum.
+            \item The frequency resolution for the spectrometer is given by the scan distance is $\Delta\bar{\nu}=\pi/L_\text{tot}$.
+            \begin{itemize}
+                \item Frequency resolution given by the scan surface.
+                \item For higher resolution, you need to scan farther??
+            \end{itemize}
+            \item We use an FTIR lamp (tungsten filament; broad bandwidth).
+            \begin{itemize}
+                \item Broad bandwidth is the opposite of monochromatic; thus, it is difficult to obtain repeated peaks, and a Fourier transform yields substantial intensities over a range of frequencies, as expected.
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+    \item Measuring an FTIR spectrum.
+    \begin{itemize}
+        \item Take reference and sample scans (yielding $I_0$ and $I$ data) with that broadband bulb.
+        \item Then take an interferogram with and without the sample.
+        \item Then take an experimental spectrum, which is leveled and calculated from the previous work using $T=I/I_0$ and $A=-\log T$.
+        \item What is experimental and what is mathematical manipulations here??
+    \end{itemize}
+    \item Wrap up.
+    \begin{itemize}
+        \item A spectrum originates in the time-dependent behavior of molecules driven by electromagnetic radiation.
+        \item It is possible to perform experiments as a function of frequency or time.
+        \begin{itemize}
+            \item There are practical differences, but they encode the same information.
+        \end{itemize}
+        \item These are related by a Fourier transform.
+        \item Fourier transform IR spectroscopy uses interferometry to relate changing optical pathlength to optical frequency.
+        \begin{itemize}
+            \item More on this??
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}
