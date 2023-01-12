@@ -4,8 +4,10 @@
 \usepackage{marginnote}
 \usepackage{enumitem}
 \usepackage{siunitx}
+\usepackage{xr}
+\usepackage[style=apa]{biblatex}
 \usepackage{graphicx,tikz}
-\usepackage{float}
+\usepackage{float,subcaption}
 \usepackage{mhchem}
 \usepackage{amsmath,amssymb}
 \usepackage{bm,physics}
@@ -33,7 +35,11 @@
     \fill (1.2,0) -- (0,-1) -- (3.5,0);
 }}}
 
+\sisetup{range-phrase=-,range-units=single}
 \DeclareSIUnit{\molar}{M}
+
+\addbibresource{\subfix{../main.bib}}
+\DefineBibliographyStrings{english}{bibliography={References}}
 
 \graphicspath{{../ExtFiles/}}
 

@@ -9,7 +9,7 @@
 
 
 
-\chapter{???}
+\chapter{Interpreting Spectra}
 \section{Lecture 3: Time, Frequency, and Fourier Transforms}
 \begin{itemize}
     \item \marginnote{1/10:}Frequency- and time-domain spectroscopy.
@@ -206,6 +206,342 @@
     \begin{itemize}
         \item Doing both.
         \item Electronic spectroscopy will be covered in lecture next week and will not be emphasized in the short lab report; if we choose to write our long lab report on UV-VIS, though, we will be expected to discuss it in more depth. 
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Lecture 4: Quantum Principles for Interpreting Molecular Spectra}
+\begin{itemize}
+    \item \marginnote{1/12:}Today's concepts should be familiar, but reviewing Chapters 5,13 of \textcite{bib:McQuarrieSimon} would be appropriate at this time.
+    \item Introducing quantum mechanical variables.
+    \begin{itemize}
+        \item Classically, light resonantly interacts with the natural periodic motion of bound charges, which induces a change in the dipole moment.
+        \begin{itemize}
+            \item Matching the driving force with the particles natural resonance leads to absorption of light.
+            \item These insights are all correct (and have a quantum analog).
+        \end{itemize}
+        \item As we've seen, a classical description says a lot about spectroscopy. However, it fails to explain many other details, and we'll need quantum mechanics to go any further.
+        \begin{itemize}
+            \item Fine structure --- as we'll see in our first two experiments --- is an example.
+        \end{itemize}
+        \item We now seek to describe quantum versions of\dots
+        \begin{itemize}
+            \item $Q$: The coordinates describing the positions of electrons and nuclei.
+            \item $E$: The total energy (kinetic and potential) in the light field and the matter.
+            \item $\omega-\omega_0$: The resonance condition between the matter and the light.
+            \item $\pdv*{\mu}{Q}$: The transition dipole moment; the strength of the light matter interaction, i.e., how much the dipole changes as the particles move.
+        \end{itemize}
+    \end{itemize}
+    \item Classical vs. quantum coordinates.
+    \begin{itemize}
+        \item Classically, there is no restriction on the energy, position, and motion of particles.
+        \item In quantum mechanics\dots
+        \begin{itemize}
+            \item The state of the system is given by a wavefunction $\Psi(r)$, which is not an observable quantity; the wavefunction only encodes the position.
+            \item The actual description of particle position and motion is probabilistic, given by $P(r)=|\Psi(r)|^2\dd{r}$.
+            \item We understand the wavefunction and energy by solving the Schr\"{o}dinger wave equation $H\psi_i=E_i\psi_i$ to describe discrete states.
+            \begin{itemize}
+                \item Each state has a fixed energy (an eigenvalue $E_i$) and spatial configuration (an eigenstate $\psi_i$).
+                \item Unlike classical particles, these waves are extended in space, can have nodes, and can interfere constructively and destructively with each other.
+            \end{itemize}
+            \item The general state of the system $\Psi(r)$ of a system can be formed from a linear combination (or superposition) of it's constituent eigenstates:
+            \begin{equation*}
+                \Psi(r) = \sum_ic_i\psi_i(r)
+            \end{equation*}
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Hamiltonian operator}: An operator that describes the total (potential and kinetic) energy of the system.
+    \item Describing states and coordinates: The position and motion of nuclei and electrons.
+    \begin{itemize}
+        \item For any particle (either the nucleus or an electron)\dots
+        \begin{itemize}
+            \item The position of the particle is governed by 3 degrees of freedom --- $(x,y,z)$ or $(r,\theta,\phi)$ --- which are needed to describe the potential and kinetic energy of the particle, as well as any motion and structure.
+            \item Thus, $N_\text{tot}$ particles implies $3N_\text{tot}$ degrees of freedom.
+            \item Understanding the energy and behavior of all of these DOFs is a tough problem, so we need strategies.
+        \end{itemize}
+        \item We now explore one such strategy.
+        \item In a molecule, the positions of these particles is not independent.
+        \begin{itemize}
+            \item To analyze the system, let's not work in a laboratory frame but choose a molecular frame of reference.
+            \item We'll assign internal coordinates, define the origin as the center of mass $r_0$, and place the coordinate axes along symmetry axes.
+            \item Recall that
+            \begin{equation*}
+                r_0 = \frac{1}{m_\text{tot}}\sum_{i\text{ particles}}m_ir_i
+            \end{equation*}
+        \end{itemize}
+    \end{itemize}
+    \item How do we separate nuclear and electronic motion?
+    \begin{itemize}
+        \item Apply the \textbf{Born-Oppenheimer approximation}.
+    \end{itemize}
+    \item \textbf{Born-Oppenheimer approximation}: Assume that electronics are much lighter ($\sim 1000$ times) than the nuclei, and hence moving far more rapidly, implying that nuclear motion does not meaningfully affect electronic motion on an electronic-motion timescale and electronic motion will essentially instantaneously adapt to changes in nuclear motion on a nuclear-motion timescale.
+    \begin{itemize}
+        \item Implication: We can solve the electronic Schr\"{o}dinger equation for a fixed/static nuclear configuration.
+        \begin{itemize}
+            \item In particular, we can solve the electronic and nuclear problems separately.
+        \end{itemize}
+        \item It's hard to overstate the importance of this in simplifying our life.
+        \item Mathematically, if $H\Psi=E\Psi$, we can separate
+        \begin{align*}
+            E &= E_\text{elec}+E_\text{nuc}&
+            \Psi &= \Psi_\text{elec}\Psi_\text{nuc}
+        \end{align*}
+    \end{itemize}
+    \item Characterizing molecular structure.
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.5\linewidth]{BOH2.png}
+        \caption{Born-Oppenheimer surfaces for \ce{H2}.}
+        \label{fig:BOH2}
+    \end{figure}
+    \begin{itemize}
+        \item Born-Oppenheimer surfaces characterize bonding.
+        \begin{itemize}
+            \item The curves/surfaces represent the possible ways in which electrons can interact and how the energy of the electrons in the system depends on the relative positions of the two hydrogen atoms.
+        \end{itemize}
+        \item The bonding and antibonding behavior of electrons originates from their quantum wavefunction nature since these wavefunctions can constructively and destructively interfere.
+        \item With respect to \ce{H2}, the bonding and antibonding wavefunctions are, respectively,
+        \begin{align*}
+            \Psi^\text{b} &= c_1(r)\psi_{1s}^\text{H1}+c_2(r)\psi_{1s}^\text{H2}&
+            \Psi^\text{ab} &= c_2(r)\psi_{1s}^\text{H1}-c_2(r)\psi_{1s}^\text{H2}
+        \end{align*}
+        \begin{itemize}
+            \item Reason for the inversion of $c_2,c_1$ in the second line??
+        \end{itemize}
+        \item Conclusion: The BO approximation not only yields energies but also allows us to visualize the shape/electronic states of the molecule at different separations.
+    \end{itemize}
+    \item Electronic states.
+    \begin{itemize}
+        \item We can generalize the approach taken above to very complex systems.
+        \item Examples include the MOs of \ce{H2O}, electron distribution of valence electrons in the HOMO and LUMO of chlorophyll a (one of the most important light-absorbing biological molecules) and caratenoids (other biological light-absorbing molecules), carbon nanotubes, and dyes.
+        \item Wavefunctions describe the electron distribution in different states.
+        \item The energy between the states is a lot! Circa $\SIrange{20000}{100000}{\per\centi\meter}=\SIrange[per-mode=symbol]{10}{50}{\kilo\joule\per\mole}$.
+    \end{itemize}
+    \item Having dealt with electronic states, how do we deal with nuclear ones?
+    \item Nuclear degrees of freedom.
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.3\linewidth}
+            \centering
+            \includegraphics[width=0.8\linewidth]{nuclearMotiona.png}
+            \caption{Vibration.}
+            \label{fig:nuclearMotiona}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.3\linewidth}
+            \centering
+            \includegraphics[width=0.63\linewidth]{nuclearMotionb.png}
+            \caption{Rotation.}
+            \label{fig:nuclearMotionb}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.3\linewidth}
+            \centering
+            \includegraphics[width=0.63\linewidth]{nuclearMotionc.png}
+            \caption{Translation.}
+            \label{fig:nuclearMotionc}
+        \end{subfigure}
+        \caption{Modes of nuclear motion.}
+        \label{fig:nuclearMotion}
+    \end{figure}
+    \begin{itemize}
+        \item Three types with respect to the center of mass.
+        \begin{enumerate}
+            \item Vibration: Displacement of atoms relative to one another / COM fixed.
+            \item Rotation: Motion about the COM.
+            \item Translation: Motion of the COM.
+        \end{enumerate}
+        \item Translation is separated out during the transformation to internal coordinates.
+        \item Vibration and rotation are separable independent motions.
+        \begin{align*}
+            E_\text{nuc} &= E_\text{vib}+E_\text{rot}&
+            \Psi_\text{nuc} &= \Psi_\text{vib}\Psi_\text{rot}
+        \end{align*}
+        \begin{itemize}
+            \item As we've discussed (see Figures \ref{fig:EMdipoleChange}-\ref{fig:EMrotationSync} and the associated discussion), these are the important ones for spectroscopy.
+        \end{itemize}
+    \end{itemize}
+    \item Nuclear degrees of freedom in molecules.
+    \begin{table}[h!]
+        \centering
+        \small
+        \renewcommand{\arraystretch}{1.2}
+        \begin{tabular}{c|cc}
+                          & Linear & Nonlinear\\
+            \hline
+            Vibrational   & $3n-5$ & $3n-6$   \\
+            Rotational    & 2      & 3        \\
+            Translational & 3      & 3        \\
+        \end{tabular}
+        \caption{Nuclear DOFs in linear and nonlinear molecules.}
+        \label{tab:linearNonDOF}
+    \end{table}
+    \begin{itemize}
+        \item For a polyatomic molecule with $n$ atoms, there are $3n$ nuclear degrees of freedom.
+        \item Linear and nonlinear molecules partition DOFs differently between vibration, rotation, and translation (see Table \ref{tab:linearNonDOF}).
+        \item The vibrational DOFs exist as \textbf{normal modes}.
+    \end{itemize}
+    \item \textbf{Normal mode}: An independent vibration that doesn't move the COM.
+    \begin{itemize}
+        \item More on this later.
+    \end{itemize}
+    \pagebreak
+    \item Vibrations.
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.35\linewidth}
+            \centering
+            \includegraphics[width=0.8\linewidth]{vibrationalTreatmenta.png}
+            \caption{Classical.}
+            \label{fig:vibrationalTreatmenta}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.35\linewidth}
+            \centering
+            \includegraphics[width=0.8\linewidth]{vibrationalTreatmentb.png}
+            \caption{Quantum.}
+            \label{fig:vibrationalTreatmentb}
+        \end{subfigure}
+        \caption{Classical vs. quantum picture of vibration.}
+        \label{fig:vibrationalTreatment}
+    \end{figure}
+    \begin{itemize}
+        \item Classical treatment.
+        \begin{itemize}
+            \item We have a quadratic potential well.
+            \item Any energy can be put into vibrational motion.
+            \begin{itemize}
+                \item More energy means a higher displacement.
+            \end{itemize}
+            \item Motion is periodic with classical turning points.
+            \item Mathematically,
+            \begin{align*}
+                E &= V+T&
+                    Q(t) &= A\sin\omega_0t\\
+                &= \frac{1}{2}kQ^2+\frac{p^2}{2m}
+            \end{align*}
+        \end{itemize}
+        \item Quantum treatment.
+        \begin{itemize}
+            \item Discrete energy levels corresponding to specific vibrational states.
+            \item Vibrational wavefunctions $\psi_\text{vib}$ of $\chi_n$: Hermite polynomials.
+        \end{itemize}
+    \end{itemize}
+    \item Quantum harmonic oscillator.
+    \begin{itemize}
+        \item Vibrational energy levels are given by
+        \begin{equation*}
+            E_\text{vib} = E_\nu
+            = h\nu_e\left( v+\frac{1}{2} \right)
+        \end{equation*}
+        where $\nu_e$ can alternatively be expressed in either of the following forms.
+        \begin{align*}
+            \nu_e &= c\bar{\nu}_e&
+            \nu_e &= \frac{1}{2\pi}\sqrt{\frac{k}{m_R}}
+        \end{align*}
+        \begin{itemize}
+            \item The right form relates energy (via $\nu_e$) to the force constant of the harmonic oscillator.
+        \end{itemize}
+        \item Variable definitions.
+        \begin{itemize}
+            \item $\nu_e$ is the vibrational frequency.
+            \item $v=0,1,2,\dots$ is the vibrational quantum number.
+        \end{itemize}
+        \item Typically, $\bar{\nu}_e\approx\SIrange{300}{3000}{\per\centi\meter}$.
+        \item $h\nu_e$ is our unit of energy (the \textbf{quantum} of energy), and $E_0=h\nu_e/2$ is the zero-point energy.
+        \begin{itemize}
+            \item Recall that $E_0$ is derived by plugging $v=0$ into the $E_\text{vib}$ equation.
+        \end{itemize}
+        \item The spacing between adjacent vibrational levels is uniform and given by
+        \begin{equation*}
+            \Delta E = E_\nu-E_{\nu-1}
+            = h\nu_e
+        \end{equation*}
+    \end{itemize}
+    \item Rotation.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.16\linewidth]{rotationClassical.png}
+        \caption{Classical rotation.}
+        \label{fig:rotationClassical}
+    \end{figure}
+    \begin{itemize}
+        \item Classically, rotation of a free object is governed by its angular momentum $L$, where
+        \begin{equation*}
+            L = I\omega_A
+        \end{equation*}
+        \item For a classical diatomic molecule\dots
+        \begin{itemize}
+            \item The moment of inertia is $I=m_Rr_e^2$;
+            \item The energy of free rotation is purely kinetic, given by $E_\text{rot}=\frac{1}{2}I\omega_A^2=L^2/2I$.
+        \end{itemize}
+        \item Quantum mechanically, these expressions still hold. However, rotational angular momentum $L$ is quantized.
+    \end{itemize}
+    \item \textbf{Quantum rigid rotor}: Rotation occurs without any vibration or other configurational change with respect to the internal coordinates.
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.6\linewidth]{rotationQuantum.png}
+        \caption{Quantum rotation.}
+        \label{fig:rotationQuantum}
+    \end{figure}
+    \begin{itemize}
+        \item Rotational energy levels are given by
+        \begin{equation*}
+            E_\text{rot} = \frac{L^2}{2I}
+            = \frac{\hbar^2}{2I}J(J+1)
+            = hc\bar{B}J(J+1)
+        \end{equation*}
+        \item Variable definitions.
+        \begin{itemize}
+            \item $J=0,1,2,\dots$ is the rotational angular momentum quantum number.
+            \item $\bar{B}=h/8\pi^2 cI$ is the rotational constant, which typically has value between \SIrange{0.1}{10}{\per\centi\meter}.
+        \end{itemize}
+        \item As $J$ increases, more and more rotational energy levels become available (see Figure \ref{fig:rotationQuantum}).
+        \begin{itemize}
+            \item Precisely, the degeneracy $g(J)$ of the $J^\text{th}$ rotational energy level is $g(J)=2J+1$.
+            \item Degenerate energy levels are indexed by the azimuthal quantum number $M_J=0,\dots,\pm J$, which has to do with the projection of the angular momentum onto the axis of rotation.
+        \end{itemize}
+        \item The spacing between adjacent rotational energy levels is \emph{not} uniform (see Figure \ref{fig:rotationQuantum}).
+        \begin{itemize}
+            \item The spacing between the $M_J$ levels is uniform.
+        \end{itemize}
+    \end{itemize}
+    \item Quantum mechanical energies.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.4\linewidth]{qmechEnergySpacing.png}
+        \caption{Electronic, vibrational, and rotational energy level spacing.}
+        \label{fig:qmechEnergySpacing}
+    \end{figure}
+    \begin{itemize}
+        \item Given the way that we approached the problem, we have that
+        \begin{align*}
+            E_\text{tot} &= E_\text{elec}+E_\text{vib}+E_\text{rot}+\cdots\\
+            &= E_\text{elec}+hc\bar{\nu}_e\left( v+\frac{1}{2} \right)+hc\bar{B}J(J+1)+\cdots
+        \end{align*}
+        \begin{itemize}
+            \item The energy can only take on discrete values (see Figure \ref{fig:qmechEnergySpacing}).
+        \end{itemize}
+        \item Note that the typical energy range for\dots
+        \begin{itemize}
+            \item $E_\text{elec}$ is \SIrange{e4}{e5}{\per\centi\meter};
+            \item $E_\text{vib}$ is \SIrange{e2}{e3}{\per\centi\meter};
+            \item $E_\text{rot}$ is \SIrange{e-1}{e1}{\per\centi\meter}.
+            \item The scale of electronic differences, vs. vibrational differences, vs. rotational differences is shown in Figure \ref{fig:qmechEnergySpacing}.
+        \end{itemize}
+        \item We can summarize the state of the system from an energy point of view by specifying vibrational and rotational constants ($\bar{\nu}_e$ and $\bar{B}$) and their associated quantum numbers ($\nu$ and $J$).
+    \end{itemize}
+    \item Wrap up.
+    \begin{itemize}
+        \item We have taken step one toward a quantum description of spectroscopy.
+        \begin{itemize}
+            \item Today: The wavefunction and energy of quantum states.
+            \item Next time: Add light into the mix.
+        \end{itemize}
+        \item Separation of electronic, vibrational, and rotational motion in molecules leads to independent contributions to the energy via
+        \begin{align*}
+            E_\text{tot} &= E_\text{elec}+E_\text{vib}+E_\text{rot}&
+            \Psi &= \Psi_\text{elec}\Psi_\text{vib}\Psi_\text{rot}
+        \end{align*}
+        \item For spectroscopy, we can specify the state of a molecule with $E_\text{elec}$ relative to the ground electronic state, the vibrational and rotational constants $\bar{\nu}_e$ and $\bar{B}_e$, and associated quantum numbers.
     \end{itemize}
 \end{itemize}
 
