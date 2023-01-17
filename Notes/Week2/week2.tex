@@ -547,5 +547,195 @@
 
 
 
+\section{Lab 1: UV-VIS}
+\subsection*{Ocean Optics Procedure}
+\begin{itemize}
+    \item This is the solution-phase experiment.
+    \item See document for experimental procedure. No theory here (see Rowan's slides for that).
+    \item This experiment allows us to calculate the extinction coefficient of iodine.
+\end{itemize}
+
+
+\subsection*{Lab Manual}
+\begin{itemize}
+    \item This is the gas-phase experiment.
+    \item \textbf{X state}: The ground electronic state.
+    \item \textbf{B state}: An excited electronic state.
+    \item Purpose of the experiment: Take a \SIrange{500}{600}{\nano\meter} UV/Vis absorption spectrum of gaseous \ce{I2}, and use it to calculate several spectroscopic constants.
+    \item Introduction to the theory.
+    \begin{itemize}
+        \item Refer to Chapter 13 of \textcite{bib:McQuarrieSimon} for addditional context on the following.
+    \end{itemize}
+    \item The energy of a spectroscopic transition (in \si{\per\centi\meter}) is given by
+    \begin{equation*}
+        \omega(v',v'',J',J'') = T_e'-T_e''+G'(v')-G''(v'')+F'(J')-F''(J'')
+    \end{equation*}
+    \item Variable definitions (all quantities in \si{\per\centi\meter}).
+    \begin{itemize}
+        \item $T_e$ is the electronic energy.
+        \item $G(v)$ is the energy of the vibrational energy level with vibrational quantum number $v$.
+        \item $F(J)$ is the energy of the rotational energy level with rotational quantum number $J$.
+        \item Single primes refer to the upper state (in this case, the B state) and double primes refer to the lower state (in this case, the X state).
+    \end{itemize}
+    \item We set the zero of energy by defining
+    \begin{equation*}
+        T_e'' = 0
+    \end{equation*}
+    \item To account for anharmonicity, vibrational energy levels can be written as a power series expansion in $(v+1/2)$.
+    \begin{equation*}
+        G(v) = \omega_e(v+1/2)-\omega_ex_e(v+1/2)^2+\omega_ey_e(v+1/2)^3+\cdots
+    \end{equation*}
+    \begin{itemize}
+        \item In the above equation, $\omega_e=\omega$ is the energy of the transition in wavenumbers, and $x_e,y_e,\dots$ are anharmonicity constants.
+    \end{itemize}
+    \item Similarly, rotational energy levels can be written in a power series expansion in $(J(J+1))$.
+    \begin{equation*}
+        F_v(J) = B_vJ(J+1)+D_vJ^2(J+1)^2+\cdots
+    \end{equation*}
+    \item In both the vibrational and rotational expansion, we only retain enough terms to adequately fit the spectroscopic data.
+    \item Under our experimental conditions\dots
+    \begin{itemize}
+        \item Resolution will not be good enough to resolve rotational structure. Additionally, the cubic term of $G(v)$ can be neglected. Thus, \emph{our} form of the transition energy is
+        \begin{align*}
+            \omega(v',v'') &= \omega_\text{el}+G'(v')-G''(v'')\\
+            &= \omega_\text{el}+\omega_e'(v'+1/2)-\omega_e'x_e'(v'+1/2)^2-\omega_e''(v''+1/2)+\omega_e''x_e''(v''+1/2)^2
+        \end{align*}
+        where $\omega_\text{el}=T_e'-T_e''$.
+        \item $v,J$ in $(v',J'),(v'',J'')$ can take on any integer value in theory, but in practice, only a few show up.
+        \begin{itemize}
+            \item Indeed, the most intense transitions will be from level $v''=0$ and they will decrease in intensity as $v''$ increases.
+            \item Additionally, there will be transitions to several values of $v'$. No \emph{simple} rules govern the intensities.
+        \end{itemize}
+        \item Also expect to see some overlap.
+    \end{itemize}
+    \item Several references are listed. These describe how to analyze the spectra in more detail.
+    \item The experimental setup and procedure is described.
+    \item We now move into data analysis.
+    \item We analyze the spacing between electrovibrational transitions to determine the shape of the potential energy surfaces of the X and B states of \ce{I2}.
+    \begin{itemize}
+        \item In other words, any absorption peak we observe in our recorded spectrum corresponds to promotion of an electron from some vibrational energy level $v''=0,1,2$ in the ground electronic (X) state to some vibrational energy level $v'=0,1,2,\dots$ in the first excited (B) state. The spacing between these peaks allows us to calculate the necessary anharmonicity constants. We can then plug these back into a Morse potential.
+    \end{itemize}
+    \item The following well-established reference points will allow us to label all peaks in our spectrum.
+    \begin{table}[h!]
+        \centering
+        \small
+        \renewcommand{\arraystretch}{1.2}
+        \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+            \hline
+            $\lambda$ (\si{\nano\meter}) & 541.2 & 539.0 & 536.9 & 571.6 & 568.6 & 565.6 & 595.7 & 592.0 & 588.5\\
+            \hline
+            $\nu'$ & 27 & 28 & 29 & 18 & 19 & 20 & 13 & 14 & 15\\
+            \hline
+            $\nu''$ & 0 & 0 & 0 & 1 & 1 & 1 & 2 & 2 & 2\\
+            \hline
+        \end{tabular}
+        \caption{Established reference points in the UV/Vis spectrum of \ce{I2}.}
+        \label{tab:UVVisI2References}
+    \end{table}
+    \item As per the above, we can calculate that
+    \begin{align*}
+        \Delta\omega(v') ={}& \omega(v'+1,v'')-\omega(v',v'')\\
+        \begin{split}
+            ={}& \omega_\text{el}+\omega_e'(v'+3/2)-\omega_e'x_e'(v'+3/2)^2-\omega_e''(v''+1/2)+\omega_e''x_e''(v''+1/2)^2\\
+            &-\left[ \omega_\text{el}+\omega_e'(v'+1/2)-\omega_e'x_e'(v'+1/2)^2-\omega_e''(v''+1/2)+\omega_e''x_e''(v''+1/2)^2 \right]
+        \end{split}\\
+        \begin{split}
+            ={}& \omega_e'(3/2)-\omega_e'x_e'\left( {v'}^2+3v'+9/4 \right)\\
+            &-\left[ \omega_e'(1/2)-\omega_e'x_e'\left( {v'}^2+v'+1/4 \right) \right]
+        \end{split}\\
+        ={}& \omega_e'-2\omega_e'x_e'(v'+1)
+    \end{align*}
+    \begin{itemize}
+        \item Thus, a \textbf{Birge-Sponer plot} can be used to calculate $\omega_e'$ and $x_e'$.
+    \end{itemize}
+    \item \textbf{Birge-Sponer plot}: A linear plot of $\Delta\omega(v)$ vs. $v+1$.
+    \begin{itemize}
+        \item As per the above, the line of best fit should have slope $-2\omega_ex_e$ and $y$-intercept $\omega_e$.
+    \end{itemize}
+    \item Similarly,
+    \begin{equation*}
+        \Delta\omega(v'') = \omega(v',v''+1)-\omega(v',v'')
+        = \omega_3''-2\omega_e''x_e''(v''+1)
+    \end{equation*}
+    \begin{itemize}
+        \item Once again, a Birge-Sponer plot enables the calculation of $\omega_e''$ and $x_e''$.
+    \end{itemize}
+    \item Relating $\omega_e',\omega_e'',x_e',x_e''$ to the Morse potential for the X and B states.
+    \begin{itemize}
+        \item Consider the general Morse potential function
+        \begin{equation*}
+            U(r) = D_e(\e[-\beta(r-r_e)]-1)^2
+        \end{equation*}
+        \item We will take it as God-given for now that
+        \begin{align*}
+            D_e &= \frac{\omega_e(1/x_e-x_e)}{4}&
+            \beta &= \sqrt{\frac{k_e}{2hcD_e}}
+        \end{align*}
+        \begin{itemize}
+            \item Recall that the force constant $k_e$ is equal to the curvature at the bottom of the well, i.e.,
+            \begin{equation*}
+                k_e = \left( \pdv[2]{U(r)}{r} \right)_{r_e}
+                = \mu(2\pi c\omega_e)^2
+            \end{equation*}
+            where $\mu$ is the reduced mass of the system in question and $c$ is the speed of light in \si{\centi\meter\per\second}.
+        \end{itemize}
+    \end{itemize}
+    \item Describing dissociation.
+    \begin{itemize}
+        \item Recall that dissociation occurs from the ground vibrational state $v''=0$, not the potential energy minimum at $U(r_e'')$.
+        \item Thus, the dissociation energy $D_0$ is offset from $D_e$ by $G(0)$. In particular,
+        \begin{equation*}
+            D_0 = D_e-G(0)
+            = \left[ \frac{\omega_e(1/x_e-x_e)}{4} \right]-\left[ \frac{\omega_e}{2}-\frac{\omega_ex_e}{4} \right]
+            = \frac{\omega_e(1/x_e-2)}{4}
+        \end{equation*}
+    \end{itemize}
+    \item Calculating the energy difference $T_e$ between the energy minima of the X and B states.
+    \begin{itemize}
+        \item We have that
+        \begin{equation*}
+            T_e = D_e''+E(\ce{I^*})-D_e'
+        \end{equation*}
+        where $E(\ce{I^*})$ is the energy of an excited iodine atom produced when the B state of \ce{I2} dissociates.
+        \begin{itemize}
+            \item Refer to Figure \ref{fig:UVVisI2Energy} to rationalize this expression.
+            \item $E(\ce{I^*})\approx\SI{7603.15}{\per\centi\meter}$.
+        \end{itemize}
+    \end{itemize}
+    \item A plot summarizing all quantities discussed thus far.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\linewidth]{UVVisI2Energy.png}
+        \caption{The potential curves and spectroscopic quantities pertinent to \ce{I2}.}
+        \label{fig:UVVisI2Energy}
+    \end{figure}
+    \item The document discusses an alternate way to analyze the data using parabolic least squares regression.
+    \item The document includes instructions for the short lab report.
+\end{itemize}
+
+
+\subsection*{Rowan's Introduction to the UV-VIS Experiment}
+\begin{itemize}
+    \item Reviews the basics of absorption spectroscopy, today's experimental setups, and the expected analysis.
+    \item Information on error propagation.
+\end{itemize}
+
+
+\subsection*{Quantities from the Experiment}
+\begin{itemize}
+    \item The original concentration of \ce{I2} in \ce{CHCl3} was \SI{0.01}{\molar} (\SI{0.1357}{\gram} in \SI{50}{\milli\liter}).
+    \item We diluted \SI{0.7}{\milli\liter} of this solution to a volume of \SI{25}{\milli\liter}.
+    \begin{itemize}
+        \item This brought us into a region where Beer's law is linear.
+    \end{itemize}
+    \item The path length (width of the cuvette) is $b=\SI{1}{\centi\meter}$.
+    \item \textbf{Beer's law}: The following relationship, where $A$ is peak absorbance, $\varepsilon$ is the extinction coefficient, $b$ is the path length, and $C$ is the concentration. \emph{Given by}
+    \begin{equation*}
+        A = \varepsilon bC
+    \end{equation*}
+\end{itemize}
+
+
+
 
 \end{document}
