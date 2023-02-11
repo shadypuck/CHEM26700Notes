@@ -225,5 +225,117 @@
 
 
 
+\section{Lab 2: FT-IR}
+\subsection*{Lab Manual}
+\begin{itemize}
+    \item Plan.
+    \begin{itemize}
+        \item Investigate the relationships between the energies of spectral lines and the rovibrational properties of the studied molecules.
+        \item In particular, study \ce{HCl_{(g)}}.
+        \item Determine the bond length of \ce{HCl}.
+    \end{itemize}
+    \item Classical picture of molecules.
+    \begin{itemize}
+        \item Picture two point charges $\pm q$ separated by a distance $l$.
+        \item By definition, the electric dipole moment is $ql$.
+        \item $ql$ changes as the molecule vibrates.
+        \item If light waves strike the molecule and their frequency $\nu$ is equal to the normal vibration frequency of the molecule, they will drive the oscillatory motion and thus light will be absorbed and converted into vibrational energy.
+        \item Covers the harmonic oscillator treatment/derivation.
+    \end{itemize}
+    \item Quantum picture of molecules.
+    \begin{itemize}
+        \item There are allowed but discrete amounts of vibrational and rotational energy which a diatomic molecule may have in its stationary nonradiating states.
+    \end{itemize}
+    \item Diatomic molecules.
+    \begin{itemize}
+        \item Quantum harmonic oscillator: Can exist in the following energy levels, where $\bar{\nu}_e=\nu/c$ is the fundamental frequency of the oscillator expressed in wavenumbers (\si{\per\centi\meter}) and $v=0,1,2,\dots$ is the vibrational quantum number.
+        \begin{equation*}
+            E_v(\text{vib}) = hc\bar{\nu}_e\left( v+\frac{1}{2} \right)
+        \end{equation*}
+        \item Quantum rigid rotator: Can exist in the following energy levels, where $B_e=h/8\pi^2cI$ is the rotational constant (in \si{\per\centi\meter}), $I=\mu r_e^2$ is the moment of inertia, $r_e$ is the equilibrium internuclear separation, and $J$ is the rotational angular momentum quantum number.
+        \begin{equation*}
+            E_J(\text{rot}) = hcB_eJ(J+1)
+        \end{equation*}
+        \item For a diatomic molecule that is vibrating harmonically with an amplitude much smaller than the bond length and rotating as a rigid body, the total energy of vibration and rotation is given by
+        \begin{equation*}
+            E_{v,J} = E_v(\text{vib})+E_J(\text{rot})
+            = hc\left[ \bar{\nu}_e\left( v+\frac{1}{2} \right)+B_eJ(J+1) \right]
+        \end{equation*}
+        \item Selection rules determine that for IR rovibrational spectroscopy, $v$ changes by $+1$ and $J$ can change by $\pm 1$.
+        \begin{itemize}
+            \item This leads to the \textbf{R-branch} and \textbf{P-branch}.
+        \end{itemize}
+        \item The R- and P-branch equations are linear in $J''+1$ and $-J''$, respectively. Thus, plots of these quantities vs. wavenumbers follow a linear regression, allowing for experimental determination of $\bar{\nu}_e$ and $B_e$.
+        \item Real vibration potentials are not fully harmonic. We can adjust the vibrational energies with a multiplied term containing a dimensionless positive anharmonicity constant $x_e\ll 1$.
+        \begin{equation*}
+            E_v = hc\bar{\nu}_e\left( v+\frac{1}{2} \right)\left[ 1-x_e\left( v+\frac{1}{2} \right) \right]
+        \end{equation*}
+        \begin{itemize}
+            \item $x_e$ describes how the vibrational energy level spacing decreases as $v$ grows in anharmonic vibrations.
+        \end{itemize}
+        \item Similarly, real molecules are not entirely rigid as they rotate. We can adjust the rotational energies by accounting for the extent to which $B_e$ changes as the moment of inertia changes; $I$ will change more at higher $v$, so we take
+        \begin{equation*}
+            B_v = B_e-\alpha\left( v+\frac{1}{2} \right)
+        \end{equation*}
+        \begin{itemize}
+            \item $\alpha_e\ll B_e$ is a positive number.
+            \item The new rotational energy levels are $E_{J,v}(\text{rot})=hcB_vJ(J+1)$.
+        \end{itemize}
+        \item It follows that the corrected\dots
+        \begin{itemize}
+            \item Total energy is\dots
+            \begin{equation*}
+                E_{v,J} = hc\left\{ \bar{\nu}_e\left( v+\frac{1}{2} \right)\left[ 1-x_e\left( v+\frac{1}{2} \right) \right]+B_eJ(J+1)-\alpha_e\left( v+\frac{1}{2} \right)J(J+1) \right\}
+            \end{equation*}
+            \item R-branch expression is\dots
+            \begin{equation*}
+                \bar{\nu} = \bar{\nu}_e(1-2x_e)+(2B_e-3\alpha_e)+J''(2B_e-4\alpha_e)-{J''}^2\alpha_e
+            \end{equation*}
+            \item P-branch expression is\dots
+            \begin{equation*}
+                \bar{\nu} = \bar{\nu}_e(1-2x_e)-J''(2B_e-2\alpha_e)-{J''}^2\alpha_e
+            \end{equation*}
+        \end{itemize}
+        \item As before, a fit of this plot (this time, a quadratic fit) can be used to calculate $\bar{\nu}_e,B_e,\alpha_e$.
+    \end{itemize}
+    \item \textbf{R-branch}: The set of rovibrational transitions corresponding to $\Delta J=+1$. \emph{Given by}
+    \begin{equation*}
+        \bar{\nu} = \bar{\nu}_e+2B_e(J''+1)
+    \end{equation*}
+    \begin{itemize}
+        \item Derivation.
+        \begin{align*}
+            \bar{\nu} &= \frac{\Delta E}{hc}\\
+            &= \frac{E_{v',J'}-E_{v'',J''}}{hc}\\
+            &= \left[ \bar{\nu}_e\left( v''+1+\frac{1}{2} \right)+B_e(J''+1)(J''+2) \right]-\left[ \bar{\nu}_e\left( v''+\frac{1}{2} \right)+B_eJ''(J''+1) \right]\\
+            &= \bar{\nu}_e+B_e(J''+1)[(J''+2)-J'']\\
+            &= \bar{\nu}_e+2B_e(J''+1)
+        \end{align*}
+    \end{itemize}
+    \item \textbf{P-branch}: The set of rovibrational transitions corresponding to $\Delta J=-1$. \emph{Given by}
+    \begin{equation*}
+        \bar{\nu} = \bar{\nu}_e-2B_eJ''
+    \end{equation*}
+    \begin{itemize}
+        \item A similar derivation to that for the R-branch applies here.
+    \end{itemize}
+    \item Fourier transform spectroscopy.
+    \begin{itemize}
+        \item Difference from a grating spectrometer: All wavelengths are measured simultaneously; computer processing performs an FFT on the raw data later to decompose it into its component wavelengths and their respective intensities.
+        \item Advantages of FT-IR.
+        \begin{enumerate}
+            \item Substantially better signal-to-noise ratio.
+            \begin{itemize}
+                \item Math in here??
+            \end{itemize}
+            \item The light throughput can be much larger because the Michelson interferometer in an FT-IR machine does not require the narrow entrance and exit slits of the monochromator.
+            \item Computers do the data processing.
+        \end{enumerate}
+        \item FT-IR is useful for samples with very high and very low absorption bands, e.g., catalyst molecules on a surface.
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
