@@ -284,6 +284,52 @@
 \end{itemize}
 
 
+\subsection*{In-Lab Notes}
+\begin{itemize}
+    \item To start, create a dataset with proton NMR in \ce{CDCl3}. All of our \ce{{}^1H} NMR experiments will go into this dataset for the rest of the day.
+    \item Create a dataset for carbon NMR as well.
+    \item Any time you approach the instrument, do a mental metal check.
+    \item Remove the dust cap, eject any previous samples, prepare yours, and sit it to float on top. Now click "Insert sample manually."
+    \item Lock the machine onto the \ce{CDCl3} deuterium peak. There are tons of solvents to choose from, among them fruit juice (for food chemists) and blood plasma (for biologists). Once it starts hovering in a certain region, you're good.
+    \item We now do tuning. The tuner is made of adjustable capacitors, and it calibrates the receiver.
+    \item We now do shimming. Think carpentry: Making everything level. Here, we introduce a homogeneous field to correct for any inhomogeneities.
+    \item Sarah has a sample tuner and shimmer for us to hold.
+    \begin{itemize}
+        \item They are very old devices from a previous, now disassembled NMR.
+    \end{itemize}
+    \item Recall what's showing now from Tokmakoff's lectures.
+    \item Control suite with some more adjustments.
+    \item That's it for proton NMR. We now just collect our spectrum.
+    \item Acquisition finished: See bottom left-hand corner.
+    \item We now move on to data analysis. We can follow along with which scan we're on using the info in the bottom-left hand corner.
+    \item Internal standard: TMS. Was developed here at UChi!
+    \item Moving onto carbon NMR.
+    \item We'll use 8 scans every time, though more would be better (96 is standard).
+    \item Dummy scans are magnetic scans without data collection. They bring your sample back to a good place for collection after all of the calibration (24 is standard).
+    \item After the scan, go to Process $>$ Process Spectrum.
+    \item We do see 6 peaks, as expected.
+    \item As part of the short report, you'll need to assign each \ce{{}^13C} peak to which carbon on the molecule it is, numerically label the peaks, and create a numerically labeled structure in chemdraw or something.
+    \item Usually, it would take a long time to collect \ce{{}^13C} spectra, but we've drastically decreased the number of scans, giving us quicker but worse data, and this NMR has a really strong probe that allows fewer scans to accomplish more.
+    \item While we're waiting for the next spectrum to collect, we can set limits, noting which regions the instrument should measure.
+    \item MNova for data analysis.
+    \item We're going to plot $I$ vs. $\tau$ and do a nonlinear data fitting to determine $T_1$.
+    \item After collecting the last few spectra, we'll split up: Some will be doing data analysis, finding our $\tau,I$ values. Others will be doing future experiments.
+    \item There's also a 2D rendering of our data that we can do, using \ce{{}^1H} on one axis and \ce{{}^13C} on the other.
+    \item We'll start with $\tau=\text{D7}=\SI{0.001}{\second}$.
+    \item For the lab report, we make the regression plot for each of the six carbons.
+    \item The amount of time you need for a certain material is partially material dependent.
+    \item Phase correction parameters are important.
+    \begin{itemize}
+        \item $\text{PHC0}=-172.561$.
+        \item $\text{PHC1}=-336.042$.
+    \end{itemize}
+    \item We're testing $\tau=\SI{0.1}{\second}$ next.
+    \item Strategy: Augment by 2 orders of magnitude twice and then fill in.
+    \item Command line: "D7" and then enter your value.
+    \item convbin2asc
+\end{itemize}
+
+
 
 
 \end{document}
