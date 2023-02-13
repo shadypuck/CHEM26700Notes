@@ -150,5 +150,140 @@
 
 
 
+\section{Lab 3: NMR}
+\subsection*{Lab Manual}
+\begin{itemize}
+    \item Modern NMR is performed in the time-domain, and frequency-domain spectra are obtained via Fourier Transformation of the data.
+    \item Goal: Apply FT-NMR to investigate relaxation processes in liquids.
+    \begin{itemize}
+        \item Use an NMR technique called inversion recovery to determine the spin-lattice relaxation times $T_1$ for \ce{{}^13C} in n-hexanol, hexanoic acid, hexylamine, hexane thiol, or bromohexane.
+    \end{itemize}
+    \item NMR basics (misc. notes).
+    \begin{itemize}
+        \item Review from Chapter 14 of \textcite{bib:McQuarrieSimon}.
+        \item Definitions of the \textbf{Zeeman Hamiltonian} and \textbf{Zeeman levels} are new.
+        \item $\Delta E=-\gamma\hbar B_0$ gives only a static picture of nuclear interaction with the magnetic field. In reality, a single nucleus remains in a certain state no longer than a time $T_1$ on average.
+        \item A nuclear spin exposed to a magnetic field $B_0$ tends to "align" with said field. It's not so much aligning, though, as it is acting like a gyroscope in a gravitational field; indeed, it will precess about the direction of $B_0$ with a characteristic frequency $\omega$.
+        \item To rigorously treat the populations of the ground and excited spin states, we consider an \textbf{ensemble} of nuclei and the resultant thermodynamic argument.
+        \item The \textbf{total magnetization} takes the form of a vector aligned in the direction of $B_0$ (which is Z; there is no net magnetization in the XY-plane).
+        \item An alternating transmitter field $B_1$ "tips" the magnet from its equilibrium position by driving the Larmor procession. The angle $\alpha$ through which $\mathbf{M}$ is tipped depends, via the following relation, on the strength of $B_1$ and the length of time $t_p$ during which $B_1$ is applied.
+        \begin{equation*}
+            \alpha = -\gamma B_1t_p
+        \end{equation*}
+        \item Immediately following this process, the transverse components $M_X,M_Y$ decay to zero with a time constant $T_2$, and the longitudinal component $M_Z$ is restored to its equilibrium value with time constant $T_1$.
+        \item As with general time constants (which tend to be exponential factors), it will take much longer than $T_1$ for equilibrium to be "restored."
+    \end{itemize}
+    \item \textbf{Zeeman Hamiltonian}: The Hamiltonian operator relevant to nuclear magnetic spins. \emph{Denoted by} $\bm{\mathcal{H}_Z}$. \emph{Given by}
+    \begin{equation*}
+        \mathcal{H}_Z = -\mu\cdot B_0 = -B_0I\gamma\hbar
+    \end{equation*}
+    \item \textbf{Zeeman levels}: The $2I+1$ energy levels $E(m)=-B_0\gamma\hbar m$, where $m=-I,-I+1,\dots,I$.
+    \item \textbf{Spin-lattice relaxation time}: The average time for which a single nucleus remains in a certain state. \emph{Denoted by} $\bm{T_1}$.
+    \item \textbf{Spin-spin relaxation time}: A type of interaction that occurs between different spins. \emph{Denoted by} $\bm{T_2}$.
+    \item \textbf{Larmor frequency}: The characteristic frequency of a given nucleus at which it processes in a magnetic field. \emph{Denoted by} $\bm{\omega}$.
+    \item \textbf{Total magnetization}: The vector sum of all the magnetic moments. \emph{Denoted by} $\pmb{\mathbf{M}}$.
+    \item FT-NMR (pulsed NMR).
+    \begin{itemize}
+        \item Experiment: A strong transmitter field $B_1$ is applied for a short time $t_p$.
+        \item Specifically, since the transverse magnetization has its maximum when $\alpha=\ang{90}$, we want to choose $t_p,B_1$ such that $\gamma B_1\cdot t_p=\ang{90}$. This is called a \textbf{$\bm{90^\circ}$ pulse}. $t_p$ is on the order of a few microseconds in general.
+        \item After the pulse, the relaxation contains spectroscopic information: The transverse magnetization will decay exponentially to zero due to spin relaxation in a manner that can be picked up by the receiver as a \textbf{free induction decay}.
+        \item Differing transmitter and Larmor frequencies: $M_Y$ and $B_1$ interfere, yielding a sine wave with exponentially decreasing amplitude:
+        \begin{equation*}
+            M_Y(t) = M_{Y_0}\cos[(\omega_0-\omega_1)t]\e[-t/T_2]
+        \end{equation*}
+        \begin{itemize}
+            \item $M_{Y_0}$ is the transverse magnetization immediately after the pulse. It is given by
+            \begin{equation*}
+                M_{Y_0} = M_{Z_0}\cos\alpha = M_{Z_0}\cos(\gamma B_1t_p)
+            \end{equation*}
+            where $M_{Z_0}$ is the equilibrium magnetization in the Z-direction.
+        \end{itemize}
+        \item In general, a molecule will have multiple chemical environments, each with its own Larmor frequency. All of these will affect the FID, so we will need to use an FT to separate the different contributing frequencies.
+        \item For more on pulsed NMR, see \textcite{bib:Bloch}.
+    \end{itemize}
+    \item \textbf{$\bm{90^\circ}$ pulse}: An application of a strong transmitter field $B_1$ over a time $t_p$ sufficiently short such that $-\gamma B_1t_p=\alpha=\ang{90}$.
+    \item \textbf{Free induction decay}: A decay that occurs in the absence of an RF-field. \emph{Also known as} \textbf{FID}.
+    \item Chemical shifts and shielding.
+    \begin{itemize}
+        \item Review from Chapter 14 of \textcite{bib:McQuarrieSimon}.
+    \end{itemize}
+    \item \ce{{}^1H} vs. \ce{{}^13C}.
+    \item Signal processing considerations.
+    \begin{itemize}
+        \item Real + imaginary parts of the FT data.
+    \end{itemize}
+    \item Locking.
+    \begin{itemize}
+        \item Making sure that the magnetic field is what the machine thinks it is.
+        \item This is like calibration, and we use a substance with a single sharp known NMR line (typically deuterium \ce{{}^2H}) to do the locking.
+    \end{itemize}
+    \item Spin decoupling.
+    \begin{itemize}
+        \item Using a third magnetic field $B_2$ to resonate the nuclei to be decoupled.
+        \item We will use this technique to spin-decouple \ce{{}^1H} and \ce{{}^13C}, greatly simplifying the latter spectrum.
+    \end{itemize}
+    \item Spin-lattice relaxation.
+    \begin{itemize}
+        \item $T_1$ is the "lifetime" of the first-order rate process that returns the magnetization to the Boltzmann equilibrium along the +Z-axis.
+        \item The \textbf{spin-lattice relaxation rate} depends on the strength of intramolecular interactions and molecular motion.
+        \item Molecular mobility can be quantified by a \textbf{correlation time}.
+        \item Mechanisms involved in relaxation: Dipolar coupling, quadrupolar coupling, paramagnetic interaction, scalar coupling, chemical shift anisotropy, and spin rotation.
+        \begin{itemize}
+            \item Protonated carbons: Dipole-dipole interactions with the attached protons are overwhelmingly dominant.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Spin-lattice relaxation rate}: The reciprocal of the spin-lattice relaxation time $T_1$. \emph{Given by}
+    \begin{equation*}
+        \frac{1}{T_1}
+    \end{equation*}
+    \item \textbf{Correlation time}: The time it takes for a molecule (or a molecular fragment) to reorient by a unit angle. \emph{Denoted by} $\bm{\tau_C}$.
+    \item Dipole-dipole coupling.
+    \begin{itemize}
+        \item Depends on the strength of dipolar coupling, orientation of the interacting nuclei, distance between the interacting nuclei, and molecular motion.
+        \item Relaxation rate for a protonated carbon.
+        \begin{equation*}
+            \frac{1}{T_1} = n\left( \frac{\mu_0}{4\pi} \right)^2\frac{\hbar^2\gamma_{\ce{C}}^2\gamma_{\ce{H}}^2}{r_{\ce{CH}}^6}\tau_{\ce{C}}
+        \end{equation*}
+        \begin{itemize}
+            \item $\mu_0$ is the permeability of a vacuum.
+            \item $\gamma_i$ is the gyromagnetic ratio of atom $i$ ($i=\ce{{}^13C},\ce{{}^1H}$).
+            \item $n$ is the number of bonded hydrogens.
+            \item $r_{\ce{CH}}$ is the average \ce{C-H} bond distance.
+        \end{itemize}
+        \item The above equation only applies in the \textbf{extreme narrowing limit}.
+    \end{itemize}
+    \item \textbf{Extreme narrowing limit}: The case where $1/\tau_{\ce{C}}$ is much greater than the resonance frequency.
+    \begin{itemize}
+        \item Holds in liquids of low viscosity.
+    \end{itemize}
+    \item Inversion recovery technique.
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.6\linewidth]{inversionRecovery.png}
+        \caption{NMR inversion recovery.}
+        \label{fig:inversionRecovery}
+    \end{figure}
+    \begin{itemize}
+        \item Use a multi-pulse NMR technique: Delay $\to$ \ang{180} pulse $\to$ delay $\tau$ $\to$ \ang{90} pulse $\to$ acquisition (FID).
+        \item This has the effect depicted in Figure \ref{fig:inversionRecovery}.
+        \item The decay of magnetization in the +Z-direction is
+        \begin{equation*}
+            \dv{M_Z}{t} = -\frac{M_Z-M_{Z_0}}{T_1}
+        \end{equation*}
+        \item Integrating the above yields
+        \begin{equation*}
+            M_Z = M_0(1-2\e[-\tau/T_1])
+        \end{equation*}
+        which can be used to calculate $T_1$.
+        \item Implications of the above equation.
+        \begin{itemize}
+            \item After a delay of $T_1$, 63\% of the magnetization is recovered along the +Z-axis.
+            \item To recover 99\% of the magnetization, a delay of at least $5T_1$ is needed.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
