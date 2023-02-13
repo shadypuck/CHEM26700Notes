@@ -1,0 +1,154 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{4}
+
+\begin{document}
+
+
+
+
+\chapter{Magnetic Resonance Spectroscopy}
+\section{Lecture 8: Magnetic Resonance Spectroscopy}
+\begin{itemize}
+    \item \marginnote{1/31:}Refer to Chapter 14 of \textcite{bib:McQuarrieSimon}.
+    \item There is both NMR (nuclear magnetic resonance) and ESR (electron spin resonance) or EPR (electron paramagnetic resonance).
+    \begin{itemize}
+        \item The last two are the same thing.
+    \end{itemize}
+    \item Two fields: The static magnetic field, and the probing \emph{electro}magnetic field.
+    \item Derivation of quantized angular momentum.
+    \begin{itemize}
+        \item In molecules, there is a multiplicity/degeneracy of states that grows as $2J+1$. They have quantized angular momentum.
+        \item So is the orbital angular momentum of electrons!
+        \item Putting atoms into a magnetic field \emph{creates} the anisotropy necessary for discussing the $z$-component (or any coordinate component) of angular momentum.
+        \item Spin angular momentum: Just means that the objects (e.g., electrons and nuclei) have a property that looks a lot like spin and/or angular momentum.
+        \item We say that each nucleon has a spin of $1/2$. Protons and neutrons add separately.
+        \begin{itemize}
+            \item Even number of protons and neutrons? Spin 0.
+            \item Mixed even/odd? We have actual nuclear spin.
+            \begin{itemize}
+                \item We need a nucleus like this to detect!
+            \end{itemize}
+            \item Odd/odd? We have 0 spin again.
+        \end{itemize}
+        \item We focus on spin $1/2$ particles. These have two degenerate energy states that split in a magnetic field.
+    \end{itemize}
+    \item Classical picture of spin angular momentum.
+    \begin{itemize}
+        \item Picture a charged particle with angular momentum. The circulating charge produced a magnetic field which aligns along the direction of the angular momentum.
+        \item Indeed, a spinning charged particle behaves like a dipole.
+        \item $\gamma=2mc$ is the \textbf{gyromagnetic ratio}.
+    \end{itemize}
+    \item Quantum spin angular momentum.
+    \begin{itemize}
+        \item Basically the same thing; we just rephrase everything from before in the language of operators.
+    \end{itemize}
+    \item \textbf{Zeeman effect}: Two energy levels split with increasing $B$.
+    \item \textbf{Larmor frequency}: The frequency $\nu=\gamma B/2\pi$ in the radio frequency range that induces a shift.
+    \item Typical operating conditions.
+    \begin{itemize}
+        \item NMR vs. ESR: NMR has a stronger magnetic field, longer EM excitation radio waves, and significantly lower gyromagnetic ratios.
+        \item There is only a tiny difference between nuclear state occupation at room temperature; hence supercooling to get something detectable.
+    \end{itemize}
+    \item What is the magnetic dipole doing in the magnetic field?
+    \begin{itemize}
+        \item No constraints on the $x$ and $y$ components of $I$.
+        \item A dipole in a field experiences a torque.
+        \begin{itemize}
+            \item Dipole precesses around $B$ at the Larmor frequency $\nu$.
+        \end{itemize}
+        \item FT-NMR spectrometers use pulsed rf fields to synchronize and detect the procession of spins.
+    \end{itemize}
+    \item Lots of good extension material on NMR; also worth rewatching at some point!
+\end{itemize}
+
+
+
+\section{Lecture 9: Magnetic Resonance Spectroscopy 2}
+\begin{itemize}
+    \item \marginnote{2/2:}Summary of last time.
+    \begin{itemize}
+        \item The quantity that we're measuring is spin angular momentum $\bar{I}$, which is a vector quantity.
+        \begin{equation*}
+            |\bar{I}| = \hbar\sqrt{I(I+1)}
+        \end{equation*}
+        where $I=1/2$ is the nuclear spin quantum number.
+        \item The other quantity of concern is the projection $I_z=m_I\hbar$ where $m_i=\pm 1/2$.
+        \item In a magnetic field, we break degeneracy, getting $E(m_I)=-\gamma_N\hbar m_IB$ and $\Delta E=-\gamma_N\hbar B$.
+        \item Electromagnetic resonance is achieved when the frequency $\nu$ of incident radiation satisfies $h\nu=\Delta E$.
+    \end{itemize}
+    \item The interest in chemistry: Chemical shift.
+    \begin{itemize}
+        \item There are small variations in the frequency for different types of protons depending on the surrounding electron density.
+        \item Measured frequency depends on effective magnetic field.
+        \begin{itemize}
+            \item Shielding: The influence of electrons around the nucleus on the effective magnetic field.
+            \item The effective field is smaller than the applied field.
+        \end{itemize}
+        \item Shielding \emph{decreases} the splitting (this is why nearby highly polar groups lead to large shifts, while alkanes have small shifts).
+    \end{itemize}
+    \item Measuring the chemical shift.
+    \begin{itemize}
+        \item We measure the difference in the Larmor frequency relative to a standard (TMS).
+        \item Shielding is a small effect (on the order of \num{e-6}, so we use ppm $\delta$).
+        \item Example: 1 ppm at \SI{500}{\mega\hertz} is $\nu=\SI{500}{\hertz}$, which is tiny (on the order of microjoules).
+    \end{itemize}
+    \item Chemical shift charts (from OChem) are included in the slides.
+    \item FT-NMR spectrometers.
+    \begin{itemize}
+        \item How do we make these measurements?
+        \item NMR spectrometers are almost all working in FT mode these days.
+        \item They use pulsed radiofrequency (r.f.) fields and detect the precession of spins.
+        \item Precession of one spin in a magnetic field occurs at the Larmor frequency.
+        \item Applying an excitation field creates a superposition of $m_s=\pm 1/2$ states. The net dipole is now perpendicular, and precesses that way (i.e., in the $xy$ plane) in a mathematically describable fashion.
+        \item Putting your superconducting coil along the $x$- or $y$-axis allows you to detect changes.
+    \end{itemize}
+    \item \textbf{Magnetization}: The macroscopic alignment of magnetic dipoles $\bar{M}=\sum\bar{\mu}$.
+    \begin{itemize}
+        \item At equilibrium, $\bar{M}$ aligns along $\bar{B}$.
+        \item An rf field rotates magnetization to $x$: This is a \textbf{$\bm{\pi/2}$-pulse} or a \textbf{$\bm{90^\circ}$-pulse}.
+        \item We detect precessing magnetization and return to equilibrium during the \textbf{free-induction decay}. An FT of the decay then generates our spectrum.
+    \end{itemize}
+    \item Relaxation mechanism.
+    \begin{itemize}
+        \item Spin state lifetime ($T_1$).
+        \begin{itemize}
+            \item "Spin-lattice" or "longitudinal" relaxation.
+            \item Recovery of the magnetization along $z$.
+            \item A molecular property.
+            \item Transfer of energy to the environment.
+            \item The return of magnetization to equilibrium has a characteristic time constant $T_1$ which appears in the time vs. relaxation plot $1-\e[-t/T_1]$.
+        \end{itemize}
+        \item Dephasing ($T_2$).
+        \begin{itemize}
+            \item "Transverse" relaxation.
+            \item Loss of magnetization in the $xy$-plane of many different sources.
+            \item We have the loss described by $\e[-t/T_2]$.
+        \end{itemize}
+        \item These two processes are not independent.
+    \end{itemize}
+    \item There are numerous types of NMR experiments.
+    \begin{itemize}
+        \item In our lab, we just scratch the surface.
+        \item We use a population inversion to measure $T_1$.
+        \begin{itemize}
+            \item \textbf{$\bm{\pi}$-pulse} to invert magnetization.
+            \item Wait for relaxation.
+            \item Read out following another \textbf{$\bm{\pi/2}$-pulse}.
+        \end{itemize}
+        \item Two-dimensional spectroscopy.
+        \begin{itemize}
+            \item Heteronuclear single quantum coherence spectroscopy (HSQC).
+            \item Excite \ce{{}^1H}; transfer its magnetization to \ce{{}^13C}, which is nice because \ce{{}^13C} is hard to excite on its own.
+            \item Transfer back to \ce{{}^1H} and detect.
+            \item Tells us which protons transfer magnetization.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}
