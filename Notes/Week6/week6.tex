@@ -9,7 +9,7 @@
 
 
 
-\chapter{???}
+\chapter{Intro to Long Reports}
 \section{Lecture 10: Scientific Visual Communication}
 \begin{itemize}
     \item \marginnote{2/7:}Long report submissions delayed until Friday.
@@ -155,7 +155,7 @@
     \item Caption.
     \begin{itemize}
         \item Use for report figures.
-        \item It should describe what is plotted and is needed to interpret the data beyond what is in the figure itself.
+        \item It should describe what is plotted and is needed to interpret the data beyond what is in the figure.
         \item For data, typically quote specific experimental conditions.
     \end{itemize}
     \item Titles are only for oral presentation graphics.
@@ -176,6 +176,186 @@
             \item Use recommended formatting, but be aware it isn't for scientists.
         \end{itemize}
         \item There are no firm rules --- just guidelines. It is an art.
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Lecture 11: Electrochemistry}
+\begin{itemize}
+    \item \marginnote{2/9:}Guest lecture by Anna Wuttig.
+    \item Ben Masters (our TA) is one of her grad students.
+    \item Electrochem can solve important problems, and we know the mechanisms in principle because we can measure the flow of electrons in it as current.
+    \begin{itemize}
+        \item Thus, we can modify whatever we want and have an \emph{in situ} handle on reaction rate.
+        \item This is why it's important for physical chemistry, which seeks to understand, predict, and rationally design future reactions.
+    \end{itemize}
+    \item We will focus on \ce{CO2}-reduction today.
+    \begin{itemize}
+        \item Wuttig hopes to \textbf{upconvert} it to other things.
+    \end{itemize}
+    \item We currently do this with the water-gas shift reaction and Fischer-Tropsch chemistry.
+    \begin{itemize}
+        \item But this is both energy-intensive and has poor selectivity.
+    \end{itemize}
+    \item Alternative: Electrochemistry.
+    \item Example.
+    \begin{equation*}
+        \ce{2CO2 + 2H2O <=> C2H4 + 3O2}
+    \end{equation*}
+    \begin{itemize}
+        \item Produces ethylene (used in a lot of things in industry) and \ce{O2} (benign).
+        \item Allows you to store $\Delta G=\SI{1343}{\kilo\joule\per\mole}$ of energy, corresponding to $\Delta E=-\SI{1.16}{\volt}$.
+        \item This involves two electrochemical half-reactions (recall from gen-chem).
+        \begin{align*}
+            \ce{2CO2 + 12e^- + 12H+} &\ce{<=>} \ce{C2H4 + 4H2O}\tag*{$E^0=\SI{0.07}{\volt}$ vs. RHE, $\pH=7$}\\
+            \ce{2H2O} &\ce{<=>} \ce{O2 + 4e^- + 4H+}\tag*{$E^0=\SI{1.23}{\volt}$ vs. RHE, $\pH=7$}
+        \end{align*}
+        \begin{itemize}
+            \item The first one is kinetically very difficult, though --- it requires you to input \emph{twelve} electrons.
+        \end{itemize}
+    \end{itemize}
+    \pagebreak
+    \item In the EChem module, we'll study RHEs and other kinds of electrodes.
+    \begin{itemize}
+        \item Essentially, these allow us to pin EChem reactions on a common axis.
+        \item The axis does move as a function of $\pH$, though.
+    \end{itemize}
+    \item We have no electrolyser or catalyst that can run the example reaction right now.
+    \begin{itemize}
+        \item Thus, we so far have to put in more energy to store that energy.
+        \item A focus of the chemistry world: Find catalysts and conditions such that this is possible.
+    \end{itemize}
+    \item \ce{CO2} reduction as an energy storage scheme.
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.3\linewidth]{echemScheme.png}
+        \caption{\ce{CO2} reduction as an energy storage scheme.}
+        \label{fig:echemScheme}
+    \end{figure}
+    \begin{itemize}
+        \item Use renewable energy sources like wind and solar to drive electrochemical reactions. Specifically, driving the transfer of electrons may facilitate oxication of water to \ce{O2} at the anode reduction of \ce{CO2} to fuels (such as ethylene) at the cathode. Note that the water's protons will theoretically diffuse through a proton exchange membrane.
+        \item Big idea: Store renewable intermittent electricity in energy-dense chemical bonds.
+    \end{itemize}
+    \item Selectivity challenges in \ce{CO2} reduction.
+    \begin{itemize}
+        \item One reason we don't know how to do this yet: \ce{CO2} can be reduced to myriad products.
+        \item A competitive side reaction: Hydrogen evolution.
+        \item Other carbonatious products include methanol, ethanol, etc. Some of these may be good, but we don't want to produce all of them at once!
+        \item Though it might be theoretically possible to pin the $\Delta E$ thermodynamically, it's practially virtually impossible.
+        \item Consequently, selective \ce{CO2}RR requires control over the relative rates (kinetics) of competing reactions.
+    \end{itemize}
+    \item Understanding of interfacial proton coupling is poor.
+    \begin{itemize}
+        \item \ce{CO2 + 2e^- + 2H+ -> CO + H2O} is possible.
+        \item Things like molecular electrocatalysts allow us to access this at a high rate and selectivity.
+        \begin{itemize}
+            \item We can boost the rate even further with \emph{intra}molecular proton donors (esp. phenolic groups).
+            \item \emph{Inter}molecular proton donors can help, too, but make sure not to make it too acidic, or you'll favor hydrogen evolution!
+            \item Thus, what you really need is precise proton delivery.
+        \end{itemize}
+        \item These homogeneous catalysts are nice and pretty, but in a functional device, we'll need heterogeneous catalysis.
+        \begin{itemize}
+            \item Possible example: \ce{Au} catalyst.
+            \item Mathematical models suggest that the concentration profiles at the interface of the solid are higher. Essentially, the $\pH$ hear the surface becomes much more alkaline very quickly
+            \item We don't have control over the proton coordinate here, and we don't actually know what the proton donor is (could be water, hydronium, carbonic acid, etc.).
+            \item Thus, we need to understand the role of PCET in dictating \ce{CO2}RR vs. HER selectivity.
+            \item This is what Wuttig did her PhD on!
+        \end{itemize}
+    \end{itemize}
+    \item Electrochemistry is nice because you always know the rate.
+    \begin{itemize}
+        \item The velocity $v$ of the reaction is related to the current $i$, the number of electrons $n$, and Faraday's constant $F=\SI{96485}{\coulomb\per mol\ e^-}$ via
+        \begin{equation*}
+            i = nFv
+        \end{equation*}
+        \item You can also measure how many product you're forming either by assuming that all current is going to your reaction, or by using in-line gas chromatography.
+        \begin{itemize}
+            \item In the EChem module, we'll assume that everything is going to hydrogen evolution.
+        \end{itemize}
+        \item Knowing how much current is going to hydrogen and \ce{CO}, we can construct a \textbf{Tafel plot}.
+    \end{itemize}
+    \item \textbf{Tafel plot}: The relationship that describes the log-linear dependence of the reaction rate as a function of the applied potential.
+    \begin{itemize}
+        \item We will take the partial current going to \ce{CO} and plot it vs. the applied potential.
+        \item This yields direct mechanistic insight: Increasing the overpotential decreases the $\Delta G^\ddagger$.
+    \end{itemize}
+    \item Example of using a Tafel plot.
+    \begin{itemize}
+        \item Assume \ce{CO2} is reduced in a rate limiting step by combining with an electron.
+        \item Using kinetics, we would have
+        \begin{equation*}
+            R_{\ce{CO}} = k_1(\theta^*)(a_{\ce{CO2}})\exp(\frac{\beta nF}{RT})
+        \end{equation*}
+        \begin{itemize}
+            \item $\theta^*$ is the concentration of the active sites on the gold surface; not every atom on the surface is active, as can be shown via fancy microscopy techniques.
+            \item $a_{\ce{CO2}}$ is the \textbf{activity} of \ce{CO2} dissolved in solution.
+            \item $\beta$ is the symmetry factor: For reactions in which there is a high reorganizational potential energy, we can take $\beta\approx 1/2$.
+        \end{itemize}
+        \item This yields info on the Tafel slope:
+        \begin{equation*}
+            \pdv{\eta}{\log(j)} = \frac{\SI{60}{\milli\volt}}{\beta}
+            = \SIrange{120}{150}{\milli\volt}
+        \end{equation*}
+        \item Thus, we check the data: At all potentials in the linear range, check for linear dependence.
+        \item Tafel data implies ET RLS with slope about 1.
+    \end{itemize}
+    \item What if instead, we couple adsorption with proton transfer from?
+    \begin{itemize}
+        \item Look at the rate of \ce{CO} formation vs. the bicarbonate concentration.
+        \begin{itemize}
+            \item Nothing here, so it's not this.
+            \item Moreover, because it's not this charged species, it's not any acidic species (because changes in one would change the $\pH$ of all).
+        \end{itemize}
+        \item Nothing for water, too.
+        \item Thus, the data suggests that there's no proton transfer in the initial step, so it must happen afterwards.
+        \item Note that changing the partial pressure of \ce{CO} also doesn't change anything, suggesting that as soon as \ce{CO} is created, it is released and future adsorption is not inhibited.
+    \end{itemize}
+    \item Other data complete the mechanism.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\linewidth]{COEvolution.png}
+        \caption{\ce{CO} evolution mechanism.}
+        \label{fig:COEvolution}
+    \end{figure}
+    \item Simultaneous hydrogen evolution is dependent on the proton donor environment.
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.5\linewidth]{H2Evolution.png}
+        \caption{\ce{H2} evolution mechanism.}
+        \label{fig:H2Evolution}
+    \end{figure}
+    \begin{itemize}
+        \item Mechanism is deceptively simple, but profound all the same.
+        \item We first get adsorption of a proton to a hydride.
+        \begin{itemize}
+            \item But Tafel slope is super high, so you may be being limited by the ability of the protons to get to the surface in the first place.
+            \item Suppose that the protons are special, i.e., donated by the relatively slow dissociation of \ce{H2CO3}.
+            \begin{itemize}
+                \item Note that \ce{H2CO3} dissociates with $t_{1/2}=\SI{24}{\second}$ in real life; it is only super fast in our body because of an enzyme we have that takes it to $t_{1/2}=\SI{39}{\nano\second}$.
+            \end{itemize}
+            \item Changing the concentration of \ce{H2CO3} and rerunning the experiment confirms this.
+        \end{itemize}
+        \item We do observe an explicit change in the rate of hydrogen evolution based on the concentration of \ce{H2CO3}, but the relationship is complex and potential dependent.
+        \item This is an independently occurring catalytic reaction on \emph{some} catalytic site (maybe one that was occupied by \ce{CO}, maybe not, we don't know).
+    \end{itemize}
+    \item Utilizing this mechanism to design a better, more selective reaction.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\linewidth]{mesoporousAu.jpeg}
+        \caption{Enhancing heterogeneous \ce{CO2}RR with mesoporous membranes.}
+        \label{fig:mesoporousAu}
+    \end{figure}
+    \begin{itemize}
+        \item If we couple the two reactions, because they both depend on \ce{CO2 + H2O <=> HCO3- + H+}, we can increase selectivity by slowing down this equilibration even further.
+        \item We make the environment at the gold catalysis further out of equilibrium with the bulk.
+        \item Wuttig teamed up with other scientists to develop a mesoporous gold structure, forcing everything that wants to touch the gold to go through the structure.
+        \item The \ce{CO2} reaction does not care how thick the structure is, but \ce{H2} does! This leads to near-selective \ce{CO} formation.
+    \end{itemize}
+    \item In our module, however, we need to \emph{increase} \ce{H2} evolution, though!
+    \begin{itemize}
+        \item We'll use all the same principles Wuttig just discussed, but it'll be simpler.
+        \item \ce{H2} evolution is also an important reaction.
     \end{itemize}
 \end{itemize}
 
