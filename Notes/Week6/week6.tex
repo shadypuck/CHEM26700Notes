@@ -257,7 +257,7 @@
         \item These homogeneous catalysts are nice and pretty, but in a functional device, we'll need heterogeneous catalysis.
         \begin{itemize}
             \item Possible example: \ce{Au} catalyst.
-            \item Mathematical models suggest that the concentration profiles at the interface of the solid are higher. Essentially, the $\pH$ hear the surface becomes much more alkaline very quickly
+            \item Mathematical models suggest that the concentration profiles at the interface of the solid are higher. Essentially, the $\pH$ near the surface becomes much more alkaline very quickly.
             \item We don't have control over the proton coordinate here, and we don't actually know what the proton donor is (could be water, hydronium, carbonic acid, etc.).
             \item Thus, we need to understand the role of PCET in dictating \ce{CO2}RR vs. HER selectivity.
             \item This is what Wuttig did her PhD on!
@@ -357,6 +357,71 @@
         \item We'll use all the same principles Wuttig just discussed, but it'll be simpler.
         \item \ce{H2} evolution is also an important reaction.
     \end{itemize}
+\end{itemize}
+
+
+
+\section{Lab 4: GCMS}
+\subsection*{Lab Manual}
+\begin{itemize}
+    \item \marginnote{2/9:}Goal.
+    \begin{itemize}
+        \item Use GCMS to quantify how much benzene there is in 87 gasoline.
+        \item We will use a \textbf{standard addition method} with respect to an internal standard reference.
+    \end{itemize}
+    \item Why we are interested.
+    \begin{itemize}
+        \item Gasoline is a complex mixture of hydrocarbons, and refineries are known to include aromatics such as benzene, toluene, and xylenes to increase the octane rating.
+        \item However, there is increasing concern about the hazards associated with these compounds.
+    \end{itemize}
+    \item \textbf{Standard addition method}: The quantitation of a substance of interest in a complex mixture performed by spiking in increasing known amounts of that substance and plotting the resulting signal from this series of samples to determine the original amount.
+    \item Description of how gas chromatography works.
+    % \item Description of \textbf{electron ionization} and \textbf{chemical ionization} mass spectrometry.
+    \item \textbf{Electron ionization} (mass spectrometry): A "hard ionization" source that results in a charged ion likely to fragment into a characteristic fragmentation pattern. \emph{Also known as} \textbf{EI}.
+    \begin{itemize}
+        \item As discussed in \textcite{bib:CHEM30200Notes}, electrons are generated via thermionic emission from a hot tungsten filament and then accelerated by applying a large potential between the filament and anode.
+    \end{itemize}
+    \item \textbf{Chemical ionization} (mass spectrometry): A "soft ionization" soruce through which the major product is the molecular ion and very little fragmentation occurs. \emph{Also known as} \textbf{CI}.
+    \item EI is more useful for molecular identification against a library of known fragmentation patterns; CI is more useful for calculating the molecular weight of an unknown or newly synthesized compound.
+    \item Common MS peaks in EI spectra.
+    \begin{itemize}
+        \item Molecular ion at $m/z=\text{MW}$.
+        \item \ce{[C4H3]+} at $m/z=51$, which is often a tell-tale sign that the analyte is an aromatic.
+        \item \ce{[C7H7]+} at $m/z=91$, which often arises from the rearrangement of a benzyl fragment and suggests that the analyte contains a benzyl moiety.
+    \end{itemize}
+    \item Mass analyzers.
+    \item Methods of mass analysis: Quadrupole, time of flight, ion trap, ion cyclotron, etc.
+    \begin{itemize}
+        \item Our setup has both a quadrupole and time-of-flight mass analyzer.
+    \end{itemize}
+    \item \textbf{Quadrupole}: A device that filters out ions with very low or very high $m/z$ ratios.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\linewidth]{quadrupole.png}
+        \caption{Quadrupole mass spectrometer.}
+        \label{fig:quadrupole}
+    \end{figure}
+    \begin{itemize}
+        \item In our setup, it allows ions of our desired $m/z$ range to pass into the time-of-flight tube where they are ultimately detected.
+        \item Can be tuned to scan the atomic mass range or pass only a particular mass/charge of interest.
+        \item Setup: Each parallel plate contains a dc voltage as well as a radiofrequency oscillation with frequency $f$. How much something moves correlates with its mass. We use one set of plates in the $xz$-plane, and one in the $yz$-plane, each meant to filter out an extreme of mass.
+    \end{itemize}
+    \item \textbf{Time of flight}: A device that accelerates charged particles along a path and measures how long they are in the tube before they crash into a detector. \emph{Also known as} \textbf{TOF}.
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.6\linewidth]{TOF.png}
+        \caption{Time of flight mass spectrometer.}
+        \label{fig:TOF}
+    \end{figure}
+    \begin{itemize}
+        \item We rearrange $E=(1/2)mv^2$ to
+        \begin{equation*}
+            m = \left( \frac{2E}{d^2} \right)t^2
+        \end{equation*}
+        \item Smaller ions are accelerated to a higher total velocity and arrive at the detector first.
+    \end{itemize}
+    \item Standard addition analysis: Largely to be discussed in lab.
+    \item Error analysis discussed.
 \end{itemize}
 
 
