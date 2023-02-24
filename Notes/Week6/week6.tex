@@ -425,6 +425,78 @@
 \end{itemize}
 
 
+\subsection*{In Lab}
+\begin{itemize}
+    \item We are not actually solving the linear fit for concentration, but for the added concentration. This will be negative since we're concentrating the amount you would have to remove in order for the peak to disappear, which is the opposite of the initial amount.
+    \item Using an internal standard allows us to divide out volume.
+    \begin{itemize}
+        \item Let \ce{R} denote the substance of interest.
+        \item We have that
+        \begin{equation*}
+            A_{\ce{R}} \propto [\ce{R}]
+            = V\cdot\eta_{\ce{R}}\cdot[\ce{R}]
+            = V\cdot\eta_{\ce{R}}\cdot([\ce{R}]_0+[\ce{R}]_\text{add})
+        \end{equation*}
+        where\dots
+        \begin{itemize}
+            \item $A_{\ce{R}}$ is the GC peak area.
+            \item $V$ is the sample volume.
+            \item $[\ce{R}]$ is the concentration of $R$.
+            \item And $\eta_{\ce{R}}$ is the detector efficiency for \ce{R}.
+        \end{itemize}
+        \item Thus, there will be a linear relationship between $[\ce{R}]_\text{add}$ and $A_{\ce{R}}$, the $x$-intercept of which occurs when $[\ce{R}]_\text{add}=-[\ce{R}]_0$.
+        \item When $V$ is nonconstant (there will be slight variations in how much sample we add to the GCMS tube each time), we can use an \textbf{internal standard} to correct our work.
+        \item In particular, if \ce{B} denotes benzene and \ce{T} denotes toluene, we have
+        \begin{align*}
+            A_{\ce{B}} &= V\cdot\eta_{\ce{B}}\cdot([\ce{B}]_0+[\ce{B}]_\text{add})&
+            A_{\ce{T}} &= V\cdot\eta_{\ce{T}}\cdot[\ce{T}]_0
+        \end{align*}
+        \item We can then divide these two equations to obtain
+        \begin{align*}
+            \frac{A_{\ce{B}}}{A_{\ce{T}}} &= \frac{\eta_{\ce{B}}}{\eta_{\ce{T}}}\cdot\frac{[\ce{B}]_\text{add}}{[\ce{T}]_0}+\frac{\eta_{\ce{B}}}{\eta_{\ce{T}}}\cdot\frac{[\ce{B}]_0}{[\ce{T}]_0}\\
+            &= \frac{\eta_{\ce{B}}}{\eta_{\ce{T}}\cdot[\ce{T}]_0}\cdot([\ce{B}]_\text{add}+[\ce{B}]_0)
+        \end{align*}
+        \begin{itemize}
+            \item Notice that $V$ cancels out!
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Internal standard}: A substance in a solution that is always at the same concentration.
+    \item These last two points are related to Q3-4 of the lab report.
+    \item 0,2.5,5,7.5,10,12.5 are data points.
+    \item \textbf{Extract chromatogram} allows you to find all peaks that have a significant concentration of a certain $m/z$.
+    \begin{itemize}
+        \item For example, you can type in $m/z=78$ and find all peaks corresponding to benzene (there should only be one).
+        \item $m/z=91$ will get you all toluene derivatives.
+        \begin{itemize}
+            \item Xylenes come in a pair of three (ortho/meta/para).
+        \end{itemize}
+        \item $m/z=105$ should yield all xylene derivatives.
+    \end{itemize}
+    \item Range of masses: 50-600; Solvent pause time: 4 min.
+    \item 0ppm.
+    \begin{itemize}
+        \item Rt: 4.696. Benzene. Integration: 321274.63.
+        \item Rt: 6.858. Toluene. Integration: 329835.47.
+        \item Rt: 8.540. \emph{para}-Xylene. Integration: 353207.99.
+        \item Rt: 8.363. Ethyl benzene. Integration: 104551.1.
+        \item We're now using mesitylene instead of \emph{para}-xylene.
+    \end{itemize}
+    \item Notes on how to answer the questions.
+    \begin{enumerate}
+        \item Input 0ppm data in to Excel. Plot the regular chromatagram (TIC) vs. retention time.
+        \item Plot an EIC for both benzene and toluene. Also plot their extracted mass spectra (peak labels [3-4 per spectrum] should include a name or structure and an $m/z$ value). This can be extracted from the 0ppm data as well.
+        \item Using integration data for both benzene and toluene at all concentrations (jotted down) and ppm data (given), normalize the benzene data using the toluene data (toluene is an \textbf{internal standard} because it's always at the same concentration, so it makes benzene peaks comparable via normalization), make a scatter plot, find the line of best fit, and calculate the concentration.
+        \item Use the Student's $t$-test, 95\% confidence interval, $n-2=3$ DOFs, to get $t=3.182$. No need to cite a source. For tabulation, make a very simple $2\times 2$ table with headers "Concentration" and "Error" and then place the values below. To get a volume percentage, use HL's Canvas announcement to convert concentration in ppm (not mol/L) to a mass percentage, and then a volume percentage (using density).
+        \begin{itemize}
+            \item Hypothetical: Imagine 1 gram of solution (approximate as pentane density). You can convert it to liters pentane using the density and stoichiometry.
+            \item Now imagine you have \SI{5}{\micro\gram} benzene. You can convert it to liters benzene using the density and stoichiometry.
+            \item Divide the latter by the former to obtain a volume percentage.
+        \end{itemize}
+        \item Plot EICs and MSs for both mesitylene and ethyl benzene. The EICs can be the same in both cases. Peak areas are comparable across EICs, so just compare the peak area of benzene which correlates with it's above-derived concentration to estimate the concentrations of mesitylene and ethyl benzene using a simple ratio.
+    \end{enumerate}
+\end{itemize}
+
+
 
 
 \end{document}
