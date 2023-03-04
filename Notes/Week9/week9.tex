@@ -309,5 +309,30 @@
 
 
 
+\section{ECHEM Full Report Notes}
+\begin{itemize}
+    \item \marginnote{3/2:}Plot one cycle of the CVs, one of the middle cycles. Adjust by 0.65 for SHE to mercury. Do for all three electrodes. Onset potential is where the curve starts going down.
+    \item Take a current vs. voltage plot and divide the $y$-axis by area to "normalize" it and change to current density.
+    \item Tin was not stable under the reaction conditions. Therefore, its surface area and chemistry would have changed throughout the run.
+    \item How do you quantify catalytic activity?
+    \item Normalized is more valid because it gives information about an \emph{intensive} property of the material, not the \emph{extensive} correlation.
+    \item What other types of normalization are there vs. geometric normalization? Literal surface area? BET surface area?
+    \begin{itemize}
+        \item We can do an internet search to see what else has been done.
+        \item We can integrate the peaks on a CV to see how much charge is being passed. So we can compare the catalysts based on the amount of charge being passed; charge vs. material plot.
+    \end{itemize}
+    \item How do we build a Tafel plot/what is the overpotential?
+    \begin{itemize}
+        \item The overpotential occurs at 0 on the SHE. However much negative past 0 in the converted data is our overpotential. But instead of plotting the negative log CA data vs. these "raw" negative overpotentials, we'll plot vs. the "volts past zero."
+    \end{itemize}
+    \item The $\pH$ of \SI{0.1}{\molar} \ce{H2SO4} is calculated by assuming 100\% dissociation, i.e., $[\ce{H3O+}]=\SI{0.2}{\mole\per\liter}$. Thus, $\pH=-\log(0.2)\approx 0.7$.
+    \begin{itemize}
+        \item Onset potential of the \ce{Pt} CV is about \SI{0.05}{\volt}.
+        \item At this $\pH$ and potential, it appears that we're just crossing the (a) line in the Pourbaix diagram.
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
